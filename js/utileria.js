@@ -2,9 +2,9 @@
 // Recibe un texto (correo) y revisa que tenga la forma usuario@dominio.extension,
 // sin espacios y con al menos un punto después del @. Devuelve true/false.
 function validarCorreo(correo) {
-  if (typeof correo !== "string") return false;
-  const patron = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-  return patron.test(correo.trim());
+  if (typeof correo !== "string") return false; 
+  const patron = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/; 
+  return patron.test(correo.trim()); 
 }
 
 // Recibe un texto (por ejemplo un nombre) y revisa que esté compuesto
