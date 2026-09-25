@@ -2,6 +2,8 @@
 
 ## Portada
 
+**Por: Kevin Peralta Nava Peralta**
+
 Este repositorio contiene una librería de JavaScript funcional, sin frameworks
 y sin componentes visuales, que resuelve un problema muy común en cualquier
 formulario web: repetir una y otra vez la misma lógica de validación

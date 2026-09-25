@@ -4,7 +4,7 @@
 function validarCorreo(correo) {
   if (typeof correo !== "string") return false; 
   const patron = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/; 
-  return patron.test(correo.trim()); 
+  return patron.test(correo.trim());
 }
 
 // Recibe un texto (por ejemplo un nombre) y revisa que esté compuesto
