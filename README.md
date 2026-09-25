@@ -120,15 +120,15 @@ Calcula la edad en años cumplidos a partir de una fecha de nacimiento.
 
 ```javascript
 function calcularEdad(fechaNacimiento) {
-  const nacimiento = new Date(fechaNacimiento);
-  if (isNaN(nacimiento.getTime())) return NaN;
-
+  const nacimiento = new Date(fechaNacimiento); //Obtiene la fecha dada
+  if (isNaN(nacimiento.getTime())) return NaN; 
+    //Calcula la diferencia entre la fecha actual y la fecha dada
   const hoy = new Date();
   let edad = hoy.getFullYear() - nacimiento.getFullYear();
   const mesActual = hoy.getMonth() - nacimiento.getMonth();
   const noHaCumplidoAun =
     mesActual < 0 || (mesActual === 0 && hoy.getDate() < nacimiento.getDate());
-
+    //Calcula si la persona ya cumplio edad segun su dia y mes
   if (noHaCumplidoAun) edad--;
   return edad;
 }
@@ -150,7 +150,7 @@ Devuelve `true` si la persona ya cumplió 18 años.
 function esMayorDeEdad(fechaNacimiento) {
   const edad = calcularEdad(fechaNacimiento);
   if (isNaN(edad)) return false;
-  return edad >= 18;
+  return edad >= 18; //Calcula si la edad es mayor / igual a 18
 }
 ```
 
@@ -170,12 +170,13 @@ mayúscula, una minúscula, un número y un carácter especial.
 
 ```javascript
 function validarPassword(password) {
-  if (typeof password !== "string") return false;
+  if (typeof password !== "string") return false; //Obtiene el tipo de dato
   const tieneMayuscula = /[A-Z]/.test(password);
   const tieneMinuscula = /[a-z]/.test(password);
   const tieneNumero = /[0-9]/.test(password);
-  const tieneEspecial = /[^A-Za-z0-9]/.test(password);
-  const longitudValida = password.length >= 8;
+  const tieneEspecial = /[^A-Za-z0-9]/.test(password); 
+  //Valida los tipos de caracteres validos
+  const longitudValida = password.length >= 8; //Valida la longitud de la contraseña
   return (
     tieneMayuscula &&
     tieneMinuscula &&
@@ -203,15 +204,15 @@ como `(XXX) XXX-XXXX`. Si no tiene 10 dígitos, devuelve `null`.
 
 ```javascript
 function formatearTelefono(telefono) {
-  if (typeof telefono !== "string" && typeof telefono !== "number")
+  if (typeof telefono !== "string" && typeof telefono !== "number") //Obtiene el tipo de dato y la numeración
     return null;
   const digitos = String(telefono).replace(/\D/g, "");
-  if (digitos.length !== 10) return null;
+  if (digitos.length !== 10) return null; // Si el número es diferente de 10 no realiza ninguna acción
   const lada = digitos.slice(0, 3);
   const parte1 = digitos.slice(3, 6);
   const parte2 = digitos.slice(6, 10);
-  return `(${lada}) ${parte1}-${parte2}`;
-}
+  return `(${lada}) ${parte1}-${parte2}`; //Reorganiza el número y lo devuelve en el formato dado
+} 
 ```
 
 **Ejemplo**
@@ -238,7 +239,7 @@ function capitalizarPalabras(texto) {
     .toLowerCase()
     .split(/\s+/)
     .map((palabra) => palabra.charAt(0).toUpperCase() + palabra.slice(1))
-    .join(" ");
+    .join(" "); // Obtiene las palabras escritas y reescribe solo las no iniciales
 }
 ```
 
