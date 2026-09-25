@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Iniciar sesión</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/utileria.js"></script>
+  </head>
+  <body>
+    <div class="page">
+      <div class="card">
+        <h1>Iniciar sesión</h1>
+
+        <form id="formLogin" novalidate>
+          <div class="field">
+            <label for="correo">Correo electrónico</label>
+            <input type="text" id="correo" placeholder="ejemplo@correo.com" />
+            <div class="msg" id="msgCorreo"></div>
+          </div>
+
+          <div class="field">
+            <label for="password">Contraseña</label>
+            <input type="password" id="password" placeholder="Mín. 8 caracteres" />
+            <div class="hint">
+              Mayúscula, minúscula, número y carácter especial
+            </div>
+            <div class="msg" id="msgPassword"></div>
+          </div>
+
+          <button type="submit" class="btn">Entrar</button>
+
+          <div class="form-summary" id="resumen"></div>
+        </form>
+
+        <p class="nav-links">¿No tienes cuenta? <a href="index.html">Regístrate</a></p>
+      </div>
+    </div>
+    <script>
+      const inputCorreo = document.getElementById("correo");
+      const inputPassword = document.getElementById("password");
+      const msgCorreo = document.getElementById("msgCorreo");
+      const msgPassword = document.getElementById("msgPassword");
+      const resumen = document.getElementById("resumen");
+      const formLogin = document.getElementById("formLogin");
+
+      function actualizarCampo(input, elementoMsg, esValido, textoError, textoOk) {
+        elementoMsg.classList.remove("show", "error", "ok");
+        input.classList.remove("is-valid", "is-invalid");
+
+        if (input.value.trim() === "") return;
+
+        if (esValido) {
+          input.classList.add("is-valid");
+          elementoMsg.textContent = textoOk;
+          elementoMsg.classList.add("show", "ok");
+        } else {
+          input.classList.add("is-invalid");
+          elementoMsg.textContent = textoError;
+          elementoMsg.classList.add("show", "error");
+        }
+      }
+
+      inputCorreo.addEventListener("input", () => {
+        actualizarCampo(
+          inputCorreo,
+          msgCorreo,
+          validarCorreo(inputCorreo.value),
+          "Ese correo no tiene un formato válido.",
+          "Correo con formato válido."
+        );
+      });
+
+      inputPassword.addEventListener("input", () => {
+        actualizarCampo(
+          inputPassword,
+          msgPassword,
+          validarPassword(inputPassword.value),
+          "Falta mayúscula, minúscula, número o carácter especial (mín. 8).",
+          "Contraseña con formato válido."
+        );
+      });
+
+      document.getElementById("formLogin").addEventListener("submit", (evento) => {
+        evento.preventDefault();
+
+        const correoValido = validarCorreo(inputCorreo.value);
+        const passwordValida = validarPassword(inputPassword.value);
+
+        inputCorreo.dispatchEvent(new Event("input"));
+        inputPassword.dispatchEvent(new Event("input"));
+
+        resumen.classList.remove("show", "ok", "error");
+
+        if (correoValido && passwordValida) {
+          resumen.textContent = "Datos correctos.";
+          resumen.classList.add("show", "ok");
+        } else {
+          resumen.textContent = "Revise su correo y contraseña.";
+          resumen.classList.add("show", "error");
+        }
+      });
+    </script>
+  </body>
+</html>

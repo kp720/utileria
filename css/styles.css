@@ -1,0 +1,221 @@
+:root {
+  --bg: #faf9f6;
+  --surface: #ffffff;
+  --ink: #1c1c1e;
+  --ink-soft: #5c5c60;
+  --line: #e3e1db;
+  --accent: #2f5d62;
+  --accent-soft: #e7eeed;
+  --error: #a8402f;
+  --error-soft: #fbeeec;
+  --ok: #3f7d58;
+  --ok-soft: #ecf5ef;
+  --radius: 6px;
+  font-size: 16px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 32px 28px;
+}
+
+.card h1 {
+  font-size: 1.35rem;
+  margin: 0 0 4px;
+}
+
+.card p.subtitle {
+  margin: 0 0 24px;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+.nav-links {
+  text-align: center;
+  margin-top: 18px;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+.nav-links a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+.field {
+  margin-bottom: 18px;
+}
+
+.field label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.field input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+.field input:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+  border-color: var(--accent);
+}
+
+.field input.is-invalid {
+  border-color: var(--error);
+}
+
+.field input.is-valid {
+  border-color: var(--ok);
+}
+
+.hint {
+  margin-top: 6px;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+}
+
+.msg {
+  margin-top: 6px;
+  font-size: 0.8rem;
+  border-radius: var(--radius);
+  padding: 6px 10px;
+  display: none;
+}
+
+.msg.show {
+  display: block;
+}
+
+.msg.error {
+  background: var(--error-soft);
+  color: var(--error);
+}
+
+.msg.ok {
+  background: var(--ok-soft);
+  color: var(--ok);
+}
+
+.btn {
+  width: 100%;
+  padding: 11px 14px;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 6px;
+}
+
+.btn:hover {
+  background: #274b4f;
+}
+
+.btn.secondary {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+}
+
+.btn.secondary:hover {
+  background: var(--accent-soft);
+}
+
+.form-summary {
+  margin-top: 16px;
+  padding: 10px 12px;
+  border-radius: var(--radius);
+  font-size: 0.82rem;
+  display: none;
+}
+
+.form-summary.show {
+  display: block;
+}
+
+/* Modal */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(28, 28, 30, 0.45);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 10;
+}
+
+.overlay.show {
+  display: flex;
+}
+
+.modal {
+  width: 100%;
+  max-width: 340px;
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 26px 24px;
+  text-align: center;
+}
+
+.modal h2 {
+  margin: 0 0 6px;
+  font-size: 1.1rem;
+}
+
+.modal .edad-numero {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 14px 0 4px;
+}
+
+.modal .edad-estado {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  margin-bottom: 18px;
+}
+
+.modal .btn {
+  margin-top: 4px;
+}
